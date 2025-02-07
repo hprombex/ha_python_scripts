@@ -21,7 +21,7 @@
 # Author: hprombex
 
 """
-Home Assistant Python Script to save or restore entity last_changed status.
+Home Assistant Python Script to save and restore entity last_changed status.
 
 Parameters:
     action (str): 'save' or 'restore'.
