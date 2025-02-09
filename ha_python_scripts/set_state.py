@@ -62,7 +62,9 @@ if input_state_object is None and not data.get("allow_create"):
 
 # Initialize state and attributes
 input_state = input_state_object.state if input_state_object else None
-input_attributes_object = input_state_object.attributes.copy() if input_state_object else {}
+input_attributes_object = (
+    input_state_object.attributes.copy() if input_state_object else {}
+)
 
 for item, attribute_value in data.items():
     if item in ["file", "allow_create", "entity_id", "cache"]:
