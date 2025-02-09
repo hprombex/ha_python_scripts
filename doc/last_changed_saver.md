@@ -122,7 +122,7 @@ secondary: >-
 icon: mdi:motion-sensor-off
 ```
 
-![Example Mushroom Template Card](img/mushroom_template_card.jpg)
+![Example Mushroom Template Card](../img/mushroom_template_card.jpg)
 
 ## Template Entity Row
 ```yaml
@@ -136,7 +136,7 @@ icon: >-
   {{'mdi:motion-sensor' if is_state('binary_sensor.pir_attic_occupancy', 'on') else 'mdi:motion-sensor-off' }}
 ```
 
-![Example Template Entity Row](img/template_entity_row.jpg)
+![Example Template Entity Row](../img/template_entity_row.jpg)
 
 
 ## Notes

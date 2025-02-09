@@ -42,9 +42,7 @@ action = data.get("action", "save").lower()  # Expected values: 'save' or 'resto
 
 # Define the location of the JSON file to store entity states
 entity_states_location = data.get("states_location", "/config/python_scripts")
-entity_states_json_file = os.path.join(
-    entity_states_location, "entity_states.json"
-)
+entity_states_json_file = os.path.join(entity_states_location, "entity_states.json")
 
 # Retrieve entities to process
 entities = data.get("entities", "")  # eg.: binary_sensor.sms_host,switch.switch_test
@@ -58,10 +56,13 @@ def expand_wildcard(entity_pattern: str) -> list[str]:
     :return: A list of matching entity IDs from Home Assistant state objects.
     """
     matched_entities = [
-        e.entity_id for e in hass.states.all() if
-        fnmatch.fnmatch(e.entity_id, entity_pattern)
+        e.entity_id
+        for e in hass.states.all()
+        if fnmatch.fnmatch(e.entity_id, entity_pattern)
     ]
-    return matched_entities if matched_entities else []  # Return the empty list if no matches found
+    return (
+        matched_entities if matched_entities else []
+    )  # Return the empty list if no matches found
 
 
 if action == "save":
@@ -91,9 +92,7 @@ elif action == "restore":
         with open(entity_states_json_file, "r") as json_file:
             json_data = json.load(json_file)
     except FileNotFoundError:
-        raise FileNotFoundError(
-            f"State file {entity_states_json_file} not found."
-        )
+        raise FileNotFoundError(f"State file {entity_states_json_file} not found.")
 
     entities_ids = []
     for entity in entities.split(","):
