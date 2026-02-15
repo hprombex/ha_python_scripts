@@ -41,6 +41,16 @@ data:
   file: /config/python_scripts/set_state.py
 ```
 
+### Weather attribute value override
+```yaml
+action: python_script.exec
+data:
+  entity_id: weather.forecast_dom
+  temperature: "{{ states('sensor.outside_temperature')}}"
+  file: /config/python_scripts/set_state.py
+```
+
+
 ## Installation
 1. Copy the script to the `python_scripts` directory in your Home Assistant configuration folder.
 2. Ensure `python_script:` is enabled in your `configuration.yaml`.
